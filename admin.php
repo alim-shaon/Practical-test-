@@ -2,7 +2,7 @@
 session_start();
 //prevent from going to previous when session is no more
 if (!isset($_SESSION['username'])) {
-    header('location:login.php');
+    header('location:index.php');
 }
 ?>
 

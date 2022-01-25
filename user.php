@@ -2,8 +2,12 @@
 session_start();
 //prevent from going to previous when session is no more
 if (!isset($_SESSION['userid'])) {
-    header('location:login.php');
+    header('location:index.php');
 }
+$userid = $_SESSION['userid'];
+require_once "connection.php";
+$query = "SELECT * FROM all_files WHERE user_id='$userid' AND number !='0'";
+$result = mysqli_query($conn, $query);
 ?>
 
 <!DOCTYPE html>
@@ -100,7 +104,46 @@ if (!isset($_SESSION['userid'])) {
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
-        <h1>Hello <?php echo $_SESSION["username"] ?>!!   <?php echo $_SESSION["userid"] ?></h1>
+        <h1>Hello <?php echo $_SESSION["username"] ?>!!</h1>
+
+        <table class="table mt-4">
+            <thead>
+              <tr>
+                <th scope="col">Number</th>
+                <th scope="col">First_Name</th>
+                <th scope="col">Last_Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">State</th>
+                <th scope="col">Zip</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+while ($row = mysqli_fetch_assoc($result)) {
+    $number = $row['number'];
+    $first_name = $row['first_name'];
+    $last_name = $row['last_name'];
+    $emailaddress = $row['email'];
+    $file_state = $row['state'];
+    $zip = $row['zip'];
+    ?>
+            <tr>
+                <td><?php echo $number ?></td>
+                <td><?php echo $first_name ?></td>
+                <td><?php echo $last_name ?></td>
+                <td><?php echo $emailaddress ?></td>
+                <td><?php echo $file_state ?></td>
+                <td><?php echo $zip ?></td>
+
+
+            </tr>
+            <?php
+}
+?>
+            </tbody>
+</table>
+
+
       </div>
     </section>
 </div>

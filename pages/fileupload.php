@@ -2,7 +2,7 @@
 session_start();
 //prevent from going to previous when session is no more
 if (!isset($_SESSION['userid'])) {
-    header('location:login.php');
+    header('location:index.php');
 }
 ?>
 
@@ -104,14 +104,15 @@ if (!isset($_SESSION['userid'])) {
 
         <div class="container d-flex flex-column">
           <h2 class="mx-auto">Upload a CSV File Here</h2>
-          <form class="d-flex flex-column" action="">
+          <!-- form to upload csv file -->
+          <form class="d-flex flex-column" target method="post" enctype="multipart/form-data" name="form_csv" action="upload_function.php?Get_Id=<?php echo $_SESSION["userid"] ?>">
               <div class="mb-3">
 
               <input type="text" class="form-control" name="filename" placeholder="file name">
 
             </div>
             <div class="mb-3">
-              <input type="file" class="form-control" name="csvfile" required>
+              <input type="file" class="form-control" name="file_csv" required>
             </div>
 
             <input type="submit" class="btn btn-success" name="csvsubmit" value="Submit">

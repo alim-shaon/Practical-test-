@@ -1,7 +1,7 @@
 <?php
 session_start();
 //prevent from going to previous when session is no more
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['userid'])) {
     header('location:login.php');
 }
 ?>
@@ -74,13 +74,13 @@ if (!isset($_SESSION['username'])) {
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <p>User List</p>
+                <a href="./pages/fileupload.php" class="nav-link">
+                  <p>File Upload</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
-                  <p>Register</p>
+                <a href="#" class="nav-link">
+                  <p>File & Group info</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -100,7 +100,7 @@ if (!isset($_SESSION['username'])) {
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
-        <h1>Hello <?php echo $_SESSION["username"] ?>!!</h1>
+        <h1>Hello <?php echo $_SESSION["username"] ?>!!   <?php echo $_SESSION["userid"] ?></h1>
       </div>
     </section>
 </div>

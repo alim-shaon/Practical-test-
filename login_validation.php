@@ -19,8 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($row["usertype"] == "user") {
         $username = $row["username"];
+        $userid = $row["id"];
         //set session variable
         $_SESSION["username"] = $username;
+        $_SESSION["userid"] = $userid;
 
         header('location:user.php');
     } else if ($row["usertype"] == "admin") {

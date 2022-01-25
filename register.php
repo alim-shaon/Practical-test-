@@ -3,8 +3,8 @@ session_start();
 //prevent from going to previous when session is no more
 if (!isset($_SESSION['username'])) {
     header('location:login.php');
-} elseif ($_SESSION['username'] != 'admin') {
-    header('location:user.php');
+} elseif ($_SESSION['username'] == 'admin') {
+    header('location:admin.php');
 }
 ?>
 <!DOCTYPE html>
